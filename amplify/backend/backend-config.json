@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "exerciceamplifya305016c": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
