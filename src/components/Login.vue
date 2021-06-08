@@ -45,4 +45,11 @@ export default {
   cursor: pointer;
   font-size: 18px;
 }
+amplify-authenticator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100vh;
+}
 </style>
