@@ -1,46 +1,48 @@
 <template>
-  <div>
-    <amplify-authenticator>
-      <Home v-if="authState === 'signedin' && user" :user="user" />
-    </amplify-authenticator>
+  <div class="auth">
+    <cadastrar :toggle="toggle" v-if="formState === 'cadastrar'"></cadastrar>
+    <entrar v-if="formState === 'entrar'"></entrar>
+    <p v-on:click="toggle" class="toggle">
+      {{
+        formState === "cadastrar"
+          ? "Já está cadastrado? Relizar Login"
+          : "Precisa criar uma conta? Cadastrar"
+      }}
+    </p>
   </div>
 </template>
 
 <script>
-import { onAuthUIStateChange } from "@aws-amplify/ui-components";
-import Home from "./Home";
-
+import Cadastrar from "./Cadastrar";
+import Entrar from "./Entrar";
 export default {
-  name: "Login",
-  created() {
-    this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
-      this.authState = authState;
-      this.user = authData;
-    });
-  },
+  name: "app",
   data() {
     return {
-      user: undefined,
-      authState: undefined,
-      unsubscribeAuth: undefined,
+      formState: "cadastrar",
     };
   },
-  beforeUnmount() {
-    this.unsubscribeAuth();
+  methods: {
+    toggle() {
+      this.formState === "cadastrar"
+        ? (this.formState = "entrar")
+        : (this.formState = "cadastrar");
+    },
   },
   components: {
-    Home,
+    Cadastrar,
+    Entrar,
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.auth {
+  margin: 0 auto;
+  width: 460px;
+}
+.toggle {
+  cursor: pointer;
+  font-size: 18px;
 }
 </style>

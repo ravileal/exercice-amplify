@@ -1,17 +1,20 @@
 <template>
   <div>
-    <div>Hello, {{ user.username }}</div>
-    <amplify-sign-out></amplify-sign-out>
+    <!-- <div>Hello, {{ username }}</div> -->
+    <div>Pagin home</div>
+    <!-- <button @click="logout">
+      Sair
+    </button> -->
   </div>
 </template>
 
 <script>
 export default {
   name: "Home",
-  props: {
-    user: Object,
-  },
+  // props: {
+  //   username: String,
+  // },
 };
 </script>
 
-<style></style>
+<style scoped></style>

@@ -1,0 +1,36 @@
+<template>
+  <div>
+    <h2>Entrar</h2>
+    <div class="formcontainer">
+      <input placeholder="username" v-model="form.username" class="input" />
+      <input
+        placeholder="password"
+        type="password"
+        v-model="form.password"
+        class="input"
+      />
+      <button v-on:click="signIn" class="button">Entrar</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import { Auth } from "aws-amplify";
+export default {
+  name: "home",
+  data() {
+    return {
+      form: {
+        username: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    async signIn() {
+      const { username, password } = this.form;
+      await Auth.signIn(username, password);
+    },
+  },
+};
+</script>

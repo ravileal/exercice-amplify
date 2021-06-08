@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import router from "./router";
 import App from "./App.vue";
 import {
   applyPolyfills,
@@ -14,5 +15,6 @@ applyPolyfills().then(() => {
 });
 
 const app = createApp(App);
+app.use(router);
 app.config.isCustomElement = (tag) => tag.startsWith("amplify-");
 app.mount("#app");
