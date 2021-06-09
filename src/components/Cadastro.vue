@@ -22,7 +22,7 @@
         v-model="authCode"
         class="input"
       />
-      <button v-on:click="confirmSignUp" class="button">
+      <button v-on:click="confirmarCadastro" class="button">
         Confirmar cadastro
       </button>
     </div>
@@ -54,7 +54,7 @@ export default {
         console.log("Erro ao realizar cadastro");
       }
     },
-    async confirmSignUp() {
+    async confirmarCadastro() {
       try {
         await Auth.confirmSignUp(this.usuario, this.authCode);
         alert(
