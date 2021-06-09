@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import { Auth } from "aws-amplify";
 
 import Home from "./components/Home";
-import Login from "./components/Login";
+import Autenticacao from "./components/Autenticacao";
 
 const history = createWebHistory();
 const routes = [
@@ -11,8 +11,8 @@ const routes = [
     component: Home,
   },
   {
-    path: "/login",
-    component: Login,
+    path: "/autenticacao",
+    component: Autenticacao,
   },
 ];
 
@@ -29,7 +29,7 @@ router.beforeResolve((to, from, next) => {
       })
       .catch(() => {
         next({
-          path: "/login",
+          path: "/autenticacao",
         });
       });
   }

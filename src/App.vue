@@ -1,17 +1,6 @@
 <template>
   <div id="app">
-    <div class="nav">
-      <router-link tag="p" to="/">
-        <a>Home </a>
-      </router-link>
-      <router-link tag="p" to="/login" v-if="!signedIn">
-        <a>Login</a>
-      </router-link>
-    </div>
     <router-view></router-view>
-    <div class="sign-out">
-      <amplify-sign-out v-if="signedIn"></amplify-sign-out>
-    </div>
   </div>
 </template>
 
@@ -35,7 +24,7 @@ export default {
         this.$router.push("/");
       }
       if (payload.event === "signOut") {
-        this.$router.push("/login");
+        this.$router.push("/autenticacao");
         this.signedIn = false;
       }
     });
@@ -44,9 +33,6 @@ export default {
         this.signedIn = true;
       })
       .catch(() => (this.signedIn = false));
-  },
-  components: {
-    // Login,
   },
 };
 </script>
@@ -65,9 +51,5 @@ export default {
 }
 .nav p a {
   text-decoration: none;
-}
-.sign-out {
-  width: 160px;
-  margin: 0 auto;
 }
 </style>
